@@ -6,6 +6,13 @@
         xmlns:local="clr-namespace:WpfApp10"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <ContextMenu x:Key="listMenu">
+            <MenuItem Header="Добавить" Click="AddHuman"/>
+            <MenuItem Header="Удалить" Click="DeleteHuman"/>
+            <MenuItem Header="Специальности" Click="EditSpecials"/>
+        </ContextMenu>
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
@@ -13,7 +20,10 @@
         </Grid.ColumnDefinitions>
         <ListBox SelectedItem="{Binding SelectedHuman}"
                  ItemsSource="{Binding Humans}" 
-                 DisplayMemberPath="Name" />
+                 DisplayMemberPath="Name" 
+                 ContextMenu="{StaticResource listMenu}"
+                 />
+
         <StackPanel 
             DataContext="{Binding SelectedHuman}"
             Grid.Column="1" Orientation="Vertical">

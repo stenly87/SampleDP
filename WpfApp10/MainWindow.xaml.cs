@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -24,7 +25,7 @@ namespace WpfApp10
     {
         private Human selectedHuman;
 
-        public List<Human> Humans { get; set; } = new List<Human>();
+        public ObservableCollection<Human> Humans { get; set; } = new ObservableCollection<Human>();
         public Human SelectedHuman
         {
             get => selectedHuman;
@@ -53,6 +54,23 @@ namespace WpfApp10
                       new PropertyChangedEventArgs(name));
         }
         public event PropertyChangedEventHandler PropertyChanged;
+
+        private void AddHuman(object sender, RoutedEventArgs e)
+        {
+            Humans.Add(new Human());
+        }
+
+        private void DeleteHuman(object sender, RoutedEventArgs e)
+        {
+            if (SelectedHuman != null)
+                Humans.Remove(SelectedHuman);
+        }
+
+        private void EditSpecials(object sender, RoutedEventArgs e)
+        {
+            Window1 window = new Window1();
+            window.Show();
+        }
     }
 
     public class Human
