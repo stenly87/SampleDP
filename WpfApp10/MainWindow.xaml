@@ -1,0 +1,33 @@
+﻿<Window x:Class="WpfApp10.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp10"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <ListBox SelectedItem="{Binding SelectedHuman}"
+                 ItemsSource="{Binding Humans}" 
+                 DisplayMemberPath="Name" />
+        <StackPanel 
+            DataContext="{Binding SelectedHuman}"
+            Grid.Column="1" Orientation="Vertical">
+
+        <Label Content="Имя"/>
+        <TextBox Text="{Binding Name}"/>
+        <GroupBox Header="Паспорт" DataContext="{Binding Document}">
+            <StackPanel>
+                <Label Content="Серия"/>
+                <TextBox Text="{Binding Seria}"/>
+                <Label Content="Номер"/>
+                <TextBox Text="{Binding Nomer}"/>
+            </StackPanel>
+        </GroupBox>
+    </StackPanel>
+    </Grid>
+</Window>
