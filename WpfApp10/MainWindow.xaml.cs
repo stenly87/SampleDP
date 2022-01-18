@@ -23,15 +23,24 @@ namespace WpfApp10
     /// </summary>
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
-        private Human selectedHuman;
+        private Student selectedStudent;
 
-        public ObservableCollection<Human> Humans { get; set; } = new ObservableCollection<Human>();
-        public Human SelectedHuman
+        public ObservableCollection<Student> Students
         {
-            get => selectedHuman;
+            get => Data.Students;
+            set => Data.Students = value;
+        }
+        public ObservableCollection<Group> Groups { 
+            get => Data.Groups; 
+            set => Data.Groups = value;
+        }
+
+        public Student SelectedStudent
+        {
+            get => selectedStudent;
             set
             {
-                selectedHuman = value;
+                selectedStudent = value;
                 Signal();
             }
         }
@@ -40,12 +49,6 @@ namespace WpfApp10
         {
             InitializeComponent();
             DataContext = this;
-            Humans.Add(new Human());
-            Humans.Add(new Human());
-            Humans.Add(new Human());
-
-            SelectedHuman = new Human {Name = "выдели меня" };
-            Humans.Add(SelectedHuman);
         }
 
         void Signal([CallerMemberName] string name = null)
@@ -55,33 +58,37 @@ namespace WpfApp10
         }
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private void AddHuman(object sender, RoutedEventArgs e)
+        private void AddStudent(object sender, RoutedEventArgs e)
         {
-            Humans.Add(new Human());
+            Students.Add(new Student
+            {
+                LastName = "Новый студент",
+                Birthday = DateTime.Today
+            });
         }
 
-        private void DeleteHuman(object sender, RoutedEventArgs e)
+        private void DeleteStudent(object sender, RoutedEventArgs e)
         {
-            if (SelectedHuman != null)
-                Humans.Remove(SelectedHuman);
+            if (SelectedStudent == null)
+                return;
+            if (MessageBox.Show("Действительно удалить выбранного студента?",
+                "Предупреждение", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                Students.Remove(SelectedStudent);
+                SelectedStudent = null;
+            }
         }
 
-        private void EditSpecials(object sender, RoutedEventArgs e)
+        private void OpenSpecials(object sender, RoutedEventArgs e)
         {
-            Window1 window = new Window1();
-            window.Show();
+            SpecialWin win = new SpecialWin();
+            win.ShowDialog();
         }
-    }
 
-    public class Human
-    {
-        public string Name { get; set; } = "Сергей";
-        public Passport Document { get; set; } = new Passport();
-    }
-
-    public class Passport
-    {
-        public string Seria { get; set; } = "144";
-        public string Nomer { get; set; } = "888";
+        private void OpenGroups(object sender, RoutedEventArgs e)
+        {
+            GroupWin win = new GroupWin();
+            win.ShowDialog();
+        }
     }
 }
