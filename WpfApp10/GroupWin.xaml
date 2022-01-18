@@ -26,7 +26,7 @@
                 <Label Content="Наименование"/>
                 <TextBox Text="{Binding Title}" />
                 <Label Content="Год поступления"/>
-                <DatePicker SelectedDate="{Binding YearJoin}" />
+                <TextBox Text="{Binding YearJoin}" />
             </StackPanel>
             <Label Content="Специальность"/>
             <ComboBox ItemsSource="{Binding Specials}"
