@@ -7,5 +7,6 @@ namespace WpfApp10
         public string Title { get; set; }
         public int YearJoin { get; set; }
         public Special Special { get; set; }
+        public Curator Curator { get; set; }
     }
 }

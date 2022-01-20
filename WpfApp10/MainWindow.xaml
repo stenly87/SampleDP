@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp10"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Редактирование студентов" Height="450" Width="800">
     <Window.Resources>
         <ContextMenu x:Key="listMenu">
             <MenuItem Header="Добавить" Click="AddStudent"/>
@@ -25,6 +25,7 @@
             <MenuItem Header="Справочники">
                 <MenuItem Header="Специальности" Click="OpenSpecials"/>
                 <MenuItem Header="Группы" Click="OpenGroups"/>
+                <MenuItem Header="Кураторы" Click="OpenCurators"/>
             </MenuItem>
         </Menu>
         <ListBox Grid.Row="1" SelectedItem="{Binding SelectedStudent}"

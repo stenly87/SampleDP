@@ -14,5 +14,6 @@ namespace WpfApp10
         public static ObservableCollection<Special> Specials = new ObservableCollection<Special>();
         public static ObservableCollection<Student> Students = new ObservableCollection<Student>();
         public static ObservableCollection<Group> Groups = new ObservableCollection<Group>();
+        public static ObservableCollection<Curator> Curators = new ObservableCollection<Curator>();
     }
 }

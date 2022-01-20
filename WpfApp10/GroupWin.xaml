@@ -32,6 +32,10 @@
             <ComboBox ItemsSource="{Binding Specials}"
                       SelectedItem="{Binding SelectedGroup.Special}"
                       DisplayMemberPath="Title"/>
+            <Label Content="Куратор"/>
+            <ComboBox ItemsSource="{Binding Curators}"
+                      SelectedItem="{Binding SelectedGroup.Curator}"
+                      DisplayMemberPath="LastName"/>
         </StackPanel>
     </Grid>
 </Window>

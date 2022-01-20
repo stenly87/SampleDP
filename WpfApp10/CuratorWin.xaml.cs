@@ -18,27 +18,27 @@ using System.Windows.Shapes;
 namespace WpfApp10
 {
     /// <summary>
-    /// Interaction logic for SpecialWin.xaml
+    /// Interaction logic for CuratorWin.xaml
     /// </summary>
-    public partial class SpecialWin : Window, INotifyPropertyChanged
+    public partial class CuratorWin : Window, INotifyPropertyChanged
     {
-        private Special selectedSpecial;
+        private Curator selectedCurator;
 
-        public Special SelectedSpecial
+        public Curator SelectedCurator
         {
-            get => selectedSpecial;
+            get => selectedCurator;
             set
             {
-                selectedSpecial = value;
+                selectedCurator = value;
                 Signal();
             }
         }
 
-        public ObservableCollection<Special> Specials
+        public ObservableCollection<Curator> Curators
         {
-            get => Data.Specials;
+            get => Data.Curators;
         }
-        public SpecialWin()
+        public CuratorWin()
         {
             InitializeComponent();
             DataContext = this;
@@ -51,19 +51,19 @@ namespace WpfApp10
         }
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private void AddSpecial(object sender, RoutedEventArgs e)
+        private void AddCurator(object sender, RoutedEventArgs e)
         {
-            Specials.Add(new Special { Title = "Новая специальность" });
+            Curators.Add(new Curator { LastName = "Фамилия" });
         }
 
-        private void DeleteSpecial(object sender, RoutedEventArgs e)
+        private void DeleteCurator(object sender, RoutedEventArgs e)
         {
-            if (SelectedSpecial == null)
+            if (SelectedCurator == null)
                 return;
-            if (MessageBox.Show("Действительно удалить выбранную специальность?",
+            if (MessageBox.Show("Действительно удалить выбранного куратора?",
                 "Предупреждение", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
-                Specials.Remove(SelectedSpecial);
+                Curators.Remove(SelectedCurator);
             }
         }
     }

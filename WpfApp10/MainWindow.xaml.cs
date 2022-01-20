@@ -28,11 +28,9 @@ namespace WpfApp10
         public ObservableCollection<Student> Students
         {
             get => Data.Students;
-            set => Data.Students = value;
         }
         public ObservableCollection<Group> Groups { 
             get => Data.Groups; 
-            set => Data.Groups = value;
         }
 
         public Student SelectedStudent
@@ -88,6 +86,12 @@ namespace WpfApp10
         private void OpenGroups(object sender, RoutedEventArgs e)
         {
             GroupWin win = new GroupWin();
+            win.ShowDialog();
+        }
+
+        private void OpenCurators(object sender, RoutedEventArgs e)
+        {
+            CuratorWin win = new CuratorWin();
             win.ShowDialog();
         }
     }

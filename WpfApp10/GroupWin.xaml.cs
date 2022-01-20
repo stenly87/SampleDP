@@ -36,12 +36,14 @@ namespace WpfApp10
         public ObservableCollection<Group> Groups
         {
             get => Data.Groups;
-            set => Data.Groups = value;
         }
         public ObservableCollection<Special> Specials
         {
             get => Data.Specials;
-            set => Data.Specials = value;
+        }
+        public ObservableCollection<Curator> Curators
+        {
+            get => Data.Curators;
         }
         public GroupWin()
         {
